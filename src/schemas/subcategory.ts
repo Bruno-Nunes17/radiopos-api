@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ErrorSchema } from "./user.js";
+import { incidenceSchema } from "./incidence.js";
 
 export const subcategorySchema = z.object({
   id: z.string().uuid(),
@@ -7,6 +8,10 @@ export const subcategorySchema = z.object({
   name: z.string().min(1),
   createdAt: z.date(),
   updatedAt: z.date(),
+});
+
+export const subcategoryWithIncidencesSchema = subcategorySchema.extend({
+  incidencias: z.array(incidenceSchema),
 });
 
 export const createSubcategorySchema = {
@@ -34,6 +39,20 @@ export const listSubcategoriesSchema = {
   }),
   response: {
     200: z.array(subcategorySchema),
+    401: ErrorSchema,
+    500: ErrorSchema,
+  },
+};
+
+export const listSubcategoriesWithIncidencesSchema = {
+  description: "Listar subcategorias e suas incidências de uma categoria específica",
+  summary: "Listar subcategorias com incidências",
+  tags: ["Subcategoria"],
+  params: z.object({
+    categoriaId: z.string().uuid(),
+  }),
+  response: {
+    200: z.array(subcategoryWithIncidencesSchema),
     401: ErrorSchema,
     500: ErrorSchema,
   },

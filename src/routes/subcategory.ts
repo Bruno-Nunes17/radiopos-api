@@ -1,16 +1,21 @@
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { FastifyInstance } from "fastify";
+import { z } from "zod";
 import { 
   createSubcategorySchema, 
   listSubcategoriesSchema, 
   updateSubcategorySchema, 
-  deleteSubcategorySchema 
+  deleteSubcategorySchema,
+  subcategorySchema,
+  listSubcategoriesWithIncidencesSchema
 } from "../schemas/subcategory.js";
+import { ErrorSchema } from "../schemas/user.js";
 import { NotFoundError } from "../errors/index.js";
 import { CreateSubcategory } from "../usecases/subcategory/CreateSubcategory.js";
 import { ListSubcategories } from "../usecases/subcategory/ListSubcategories.js";
 import { UpdateSubcategory } from "../usecases/subcategory/UpdateSubcategory.js";
 import { DeleteSubcategory } from "../usecases/subcategory/DeleteSubcategory.js";
+import { ListSubcategoriesWithIncidences } from "../usecases/subcategory/ListSubcategoriesWithIncidences.js";
 
 export const subcategoryRoutes = async (app: FastifyInstance) => {
   // Aplicar autenticação para as rotas de escrita
@@ -48,10 +53,65 @@ export const subcategoryRoutes = async (app: FastifyInstance) => {
     schema: listSubcategoriesSchema,
     handler: async (request, reply) => {
       try {
+        const { categoriaId } = request.query as { categoriaId?: string };
         const listSubcategories = new ListSubcategories();
-        const subcategories = await listSubcategories.execute(request.query.categoriaId);
+        const subcategories = await listSubcategories.execute(categoriaId);
 
         return reply.status(200).send(subcategories);
+      } catch (error) {
+        app.log.error(error);
+        return reply.status(500).send({
+          error: "Internal server error",
+          code: "INTERNAL_SERVER_ERROR",
+        });
+      }
+    },
+  });
+
+  app.withTypeProvider<ZodTypeProvider>().route({
+    method: "GET",
+    url: "/category/:categoriaId",
+    schema: {
+      description: "Listar subcategorias de uma categoria específica",
+      summary: "Listar subcategorias por categoria",
+      tags: ["Subcategoria"],
+      params: z.object({
+        categoriaId: z.string().uuid(),
+      }),
+      response: {
+        200: z.array(subcategorySchema),
+        401: ErrorSchema,
+        500: ErrorSchema,
+      },
+    },
+    handler: async (request, reply) => {
+      try {
+        const { categoriaId } = request.params;
+        const listSubcategories = new ListSubcategories();
+        const subcategories = await listSubcategories.execute(categoriaId);
+
+        return reply.status(200).send(subcategories);
+      } catch (error) {
+        app.log.error(error);
+        return reply.status(500).send({
+          error: "Internal server error",
+          code: "INTERNAL_SERVER_ERROR",
+        });
+      }
+    },
+  });
+
+  app.withTypeProvider<ZodTypeProvider>().route({
+    method: "GET",
+    url: "/category/:categoriaId/with-incidences",
+    schema: listSubcategoriesWithIncidencesSchema,
+    handler: async (request, reply) => {
+      try {
+        const { categoriaId } = request.params;
+        const listSubcategoriesWithIncidences = new ListSubcategoriesWithIncidences();
+        const result = await listSubcategoriesWithIncidences.execute(categoriaId);
+
+        return reply.status(200).send(result);
       } catch (error) {
         app.log.error(error);
         return reply.status(500).send({
