@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
-import { prisma } from "../lib/db.js";
-import { UnauthorizedError } from "../errors/index.js";
-import { Role } from "../generated/prisma/enums.js";
+import { prisma } from "../../lib/db.js";
+import { UnauthorizedError } from "../../errors/index.js";
+import { Role } from "../../generated/prisma/enums.js";
 
 interface LoginInputDto {
   email: string;

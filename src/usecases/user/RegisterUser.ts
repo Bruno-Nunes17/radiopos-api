@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
-import { prisma } from "../lib/db.js";
-import { ConflictError } from "../errors/index.js";
-import { Role } from "../generated/prisma/enums.js";
+import { prisma } from "../../lib/db.js";
+import { ConflictError } from "../../errors/index.js";
+import { Role } from "../../generated/prisma/enums.js";
 
 interface RegisterInputDto {
   name: string;
