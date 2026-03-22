@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        Int      @id
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(EDITOR)
+  createdAt DateTime @default(now()) @db.Timestamptz()
+  updatedAt DateTime @updatedAt @db.Timestamptz()
+
+  @@map("user")
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model ApiKey {
+  id         String    @id @default(uuid())
+  name       String
+  prefix     String
+  keyHash    String    @unique
+  active     Boolean   @default(true)
+  lastUsedAt DateTime? @db.Timestamptz()
+  createdAt  DateTime  @default(now()) @db.Timestamptz()
+  updatedAt  DateTime  @updatedAt @db.Timestamptz()
+
+  @@map("api_key")
+}
+
+model Category {
+  id            String        @id @default(uuid())
+  name          String
+  color         String
+  colorBg       String
+  createdAt     DateTime      @default(now()) @db.Timestamptz()
+  updatedAt     DateTime      @updatedAt @db.Timestamptz()
+  subcategorias Subcategory[]
+}
+
+model Subcategory {
+  id          String      @id @default(uuid())
+  categoriaId String
+  name        String
+  createdAt   DateTime    @default(now()) @db.Timestamptz()
+  updatedAt   DateTime    @updatedAt @db.Timestamptz()
+  categoria   Category    @relation(fields: [categoriaId], references: [id])
+  incidencias Incidence[]
+}
+
+model Incidence {
+  id             String               @id @default(uuid())
+  subcategoriaId String
+  name           String
+  routine        Boolean              @default(false)
+  position       String?
+  description    String?
+  structures     String?
+  techTip        String?
+  youtubeId      String?
+  youtubeTitle   String?
+  createdAt      DateTime             @default(now()) @db.Timestamptz()
+  updatedAt      DateTime             @updatedAt @db.Timestamptz()
+  subcategoria   Subcategory          @relation(fields: [subcategoriaId], references: [id])
+  params         TechnicalParams?
+  criteria       EvaluationCriteria[]
+  medias         Media[]
+}
+
+model TechnicalParams {
+  id           String    @id @default(uuid())
+  incidenciaId String    @unique
+  centralRay   String?
+  ffd          String?
+  kvp          Int?
+  mas          Decimal?
+  cassetteSize String?
+  collimation  String?
+  incidence    Incidence @relation(fields: [incidenciaId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now()) @db.Timestamptz()
+  updatedAt    DateTime  @updatedAt @db.Timestamptz()
+}
+
+model EvaluationCriteria {
+  id           String    @id @default(uuid())
+  incidenciaId String
+  description  String
+  incidence    Incidence @relation(fields: [incidenciaId], references: [id], onDelete: Cascade)
+  createdAt    DateTime  @default(now()) @db.Timestamptz()
+  updatedAt    DateTime  @updatedAt @db.Timestamptz()
+}
+
+model Media {
+  id           String    @id @default(uuid())
+  incidenciaId String
+  type         MediaType
+  url          String
+  caption      String?
+  order        Int
+  sizeInBytes  Int?
+  format       String?
+  createdAt    DateTime  @default(now()) @db.Timestamptz()
+  updatedAt    DateTime  @updatedAt @db.Timestamptz()
+  incidence    Incidence @relation(fields: [incidenciaId], references: [id], onDelete: Cascade)
+}
+
+enum MediaType {
+  illustration
+  xray
+}
