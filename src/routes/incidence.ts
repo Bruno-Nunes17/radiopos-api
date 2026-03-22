@@ -48,8 +48,9 @@ export const incidenceRoutes = async (app: FastifyInstance) => {
     schema: listIncidencesSchema,
     handler: async (request, reply) => {
       try {
+        const query = request.query as { subcategoriaId?: string; routine?: boolean };
         const listIncidences = new ListIncidences();
-        const incidences = await listIncidences.execute(request.query.subcategoriaId);
+        const incidences = await listIncidences.execute(query);
 
         return reply.status(200).send(incidences);
       } catch (error) {

@@ -79,11 +79,14 @@ export const createIncidenceSchema = {
 };
 
 export const listIncidencesSchema = {
-  description: "Listar todas as incidências ou filtrar por subcategoria",
+  description: "Listar todas as incidências ou filtrar por subcategoria e rotina",
   summary: "Listar incidências",
   tags: ["Incidência"],
   query: z.object({
     subcategoriaId: z.string().uuid().optional(),
+    routine: z.string()
+      .optional()
+      .transform((val) => val === "true" ? true : val === "false" ? false : undefined),
   }),
   response: {
     200: z.array(incidenceSchema),
