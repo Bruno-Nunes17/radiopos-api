@@ -15,6 +15,7 @@ import { authRoutes } from "./routes/auth.js";
 import { categoryRoutes } from "./routes/category.js";
 import { subcategoryRoutes } from "./routes/subcategory.js";
 import { incidenceRoutes } from "./routes/incidence.js";
+import { syncRoutes } from "./routes/sync.js";
 
 const app = Fastify({ logger: true });
 
@@ -57,6 +58,7 @@ await app.register(authRoutes, { prefix: "/auth" });
 await app.register(categoryRoutes, { prefix: "/category" });
 await app.register(subcategoryRoutes, { prefix: "/subcategory" });
 await app.register(incidenceRoutes, { prefix: "/incidence" });
+await app.register(syncRoutes, { prefix: "/sync" });
 
 await app.register(fastifyApiReference, {
   routePrefix: "/docs",
