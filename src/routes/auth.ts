@@ -53,23 +53,13 @@ export const authRoutes = async (app: FastifyInstance) => {
             role: result.user.role,
           },
           {
-            expiresIn: env.JWT_EXPIRY,
+            expiresIn: "15m",
           }
         );
 
-        const refreshToken = request.server.jwt.sign(
-          {
-            sub: result.user.id,
-            role: result.user.role,
-          },
-          {
-            expiresIn: env.JWT_REFRESH_EXPIRY,
-          }
-        );
 
         return reply.status(200).send({
           token,
-          refreshToken,
           user: result.user,
         });
       } catch (error) {
@@ -95,14 +85,14 @@ export const authRoutes = async (app: FastifyInstance) => {
     url: "/refresh",
     schema: refreshSchema,
     handler: async (request, reply) => {
-      const { refreshToken } = request.body;
+      const { token } = request.body;
 
       try {
         // Verify the refresh token
-        const payload = request.server.jwt.verify(refreshToken) as { sub: number; role: string };
+        const payload = request.server.jwt.verify(token) as { sub: number; role: string };
 
         // Generate new access token
-        const token = request.server.jwt.sign(
+        const refreshToken = request.server.jwt.sign(
           {
             sub: payload.sub,
             role: payload.role,
@@ -113,7 +103,7 @@ export const authRoutes = async (app: FastifyInstance) => {
         );
 
         return reply.status(200).send({
-          token,
+          refreshToken,
         });
       } catch (err) {
         app.log.error(err);

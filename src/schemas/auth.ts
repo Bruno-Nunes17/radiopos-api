@@ -41,7 +41,6 @@ export const loginSchema = {
   response: {
     200: z.object({
       token: z.string(),
-      refreshToken: z.string(),
       user: z.object({
         id: z.number(),
         name: z.string(),
@@ -59,11 +58,11 @@ export const refreshSchema = {
   summary: "Refresh Token",
   tags: ["Autenticação"],
   body: z.object({
-    refreshToken: z.string(),
+    token: z.string(),
   }),
   response: {
     200: z.object({
-      token: z.string(),
+      refreshToken: z.string(),
     }),
     401: ErrorSchema,
     500: ErrorSchema,
