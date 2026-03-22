@@ -154,3 +154,18 @@ export const deleteIncidenceSchema = {
     500: ErrorSchema,
   },
 };
+
+export const getIncidenceSchema = {
+  description: "Obter uma incidência específica pelo seu ID",
+  summary: "Obter incidência",
+  tags: ["Incidência"],
+  params: z.object({
+    id: z.string().uuid(),
+  }),
+  response: {
+    200: incidenceSchema,
+    401: ErrorSchema,
+    404: ErrorSchema,
+    500: ErrorSchema,
+  },
+};

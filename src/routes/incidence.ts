@@ -4,36 +4,38 @@ import {
   createIncidenceSchema, 
   listIncidencesSchema, 
   updateIncidenceSchema, 
-  deleteIncidenceSchema 
+  deleteIncidenceSchema,
+  getIncidenceSchema
 } from "../schemas/incidence.js";
 import { NotFoundError } from "../errors/index.js";
 import { CreateIncidence } from "../usecases/incidence/CreateIncidence.js";
 import { ListIncidences } from "../usecases/incidence/ListIncidences.js";
 import { UpdateIncidence } from "../usecases/incidence/UpdateIncidence.js";
 import { DeleteIncidence } from "../usecases/incidence/DeleteIncidence.js";
+import { GetIncidence } from "../usecases/incidence/GetIncidence.js";
 
 export const incidenceRoutes = async (app: FastifyInstance) => {
-  // Aplicar autenticação para as rotas de escrita
-  app.addHook("preHandler", app.authenticate);
-
+  // Rotas públicas (Leitura)
   app.withTypeProvider<ZodTypeProvider>().route({
-    method: "POST",
-    url: "/",
-    schema: createIncidenceSchema,
+    method: "GET",
+    url: "/:id",
+    schema: getIncidenceSchema,
     handler: async (request, reply) => {
       try {
-        const createIncidence = new CreateIncidence();
-        const incidence = await createIncidence.execute(request.body);
+        const getIncidence = new GetIncidence();
+        const incidence = await getIncidence.execute(request.params.id);
 
-        return reply.status(201).send(incidence);
+        return reply.status(200).send(incidence);
       } catch (error) {
         app.log.error(error);
+
         if (error instanceof NotFoundError) {
           return reply.status(404).send({
             error: error.message,
             code: "NOT_FOUND_ERROR",
           });
         }
+
         return reply.status(500).send({
           error: "Internal server error",
           code: "INTERNAL_SERVER_ERROR",
@@ -55,6 +57,35 @@ export const incidenceRoutes = async (app: FastifyInstance) => {
         return reply.status(200).send(incidences);
       } catch (error) {
         app.log.error(error);
+        return reply.status(500).send({
+          error: "Internal server error",
+          code: "INTERNAL_SERVER_ERROR",
+        });
+      }
+    },
+  });
+
+  // Aplicar autenticação para as rotas de escrita (POST, PATCH, DELETE)
+  app.addHook("preHandler", app.authenticate);
+
+  app.withTypeProvider<ZodTypeProvider>().route({
+    method: "POST",
+    url: "/",
+    schema: createIncidenceSchema,
+    handler: async (request, reply) => {
+      try {
+        const createIncidence = new CreateIncidence();
+        const incidence = await createIncidence.execute(request.body);
+
+        return reply.status(201).send(incidence);
+      } catch (error) {
+        app.log.error(error);
+        if (error instanceof NotFoundError) {
+          return reply.status(404).send({
+            error: error.message,
+            code: "NOT_FOUND_ERROR",
+          });
+        }
         return reply.status(500).send({
           error: "Internal server error",
           code: "INTERNAL_SERVER_ERROR",
