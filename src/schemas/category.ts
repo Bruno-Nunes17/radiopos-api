@@ -65,7 +65,7 @@ export const deleteCategorySchema = {
     id: z.string().uuid(),
   }),
   response: {
-    204: z.null(),
+    200: z.array(categorySchema),
     401: ErrorSchema,
     404: ErrorSchema,
     500: ErrorSchema,

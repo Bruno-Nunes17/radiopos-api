@@ -14,5 +14,10 @@ export class DeleteCategory {
     await prisma.category.delete({
       where: { id },
     });
+
+    // Retorna a lista atualizada após o delete
+    return prisma.category.findMany({
+      orderBy: { name: "asc" },
+    });
   }
 }

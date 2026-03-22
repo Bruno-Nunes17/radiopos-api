@@ -94,11 +94,9 @@ export const categoryRoutes = async (app: FastifyInstance) => {
     handler: async (request, reply) => {
       try {
         const deleteCategory = new DeleteCategory();
-        await deleteCategory.execute(request.params.id);
+        const updatedList = await deleteCategory.execute(request.params.id);
 
-        const listCategories = new ListCategories();
-        const categories = await listCategories.execute();
-        if (!categories) return reply.status(204).send(categories);
+        return reply.status(200).send(updatedList);
       } catch (error) {
         app.log.error(error);
 
