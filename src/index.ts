@@ -13,6 +13,7 @@ import { env } from "./lib/env.js";
 import { authPlugin } from "./lib/auth.js";
 import { userRoutes } from "./routes/user.js";
 import { categoryRoutes } from "./routes/category.js";
+import { subcategoryRoutes } from "./routes/subcategory.js";
 
 const app = Fastify({ logger: true });
 
@@ -53,6 +54,7 @@ await app.register(fastifySwagger, {
 await app.register(authPlugin);
 await app.register(userRoutes, { prefix: "/user" });
 await app.register(categoryRoutes, { prefix: "/category" });
+await app.register(subcategoryRoutes, { prefix: "/subcategory" });
 
 await app.register(fastifyApiReference, {
   routePrefix: "/docs",
