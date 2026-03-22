@@ -18,8 +18,14 @@ import { DeleteSubcategory } from "../usecases/subcategory/DeleteSubcategory.js"
 import { ListSubcategoriesWithIncidences } from "../usecases/subcategory/ListSubcategoriesWithIncidences.js";
 
 export const subcategoryRoutes = async (app: FastifyInstance) => {
-  // Aplicar autenticação para as rotas de escrita
-  app.addHook("preHandler", app.authenticate);
+  // Unificar autenticação: GET aceita JWT ou API Key, outros exigem JWT
+  app.addHook("preHandler", async (request, reply) => {
+    if (request.method === "GET") {
+      await app.authenticateAny(request, reply);
+    } else {
+      await app.authenticate(request, reply);
+    }
+  });
 
   app.withTypeProvider<ZodTypeProvider>().route({
     method: "POST",

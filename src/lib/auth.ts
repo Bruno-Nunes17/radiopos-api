@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify'
 import fastifyJwt from "@fastify/jwt"
 import fp from "fastify-plugin"
 import { env } from "./env.js"
+import { ValidateApiKey } from '../usecases/user/ValidateApiKey.js'
 
 async function authPluginRaw(app: FastifyInstance) {
   app.register(fastifyJwt, {
@@ -16,8 +18,42 @@ async function authPluginRaw(app: FastifyInstance) {
       } catch (err) {
         console.log(err);
         
-        reply.status(401).send({ message: "Não autorizado" })
+        return reply.status(401).send({ 
+          error: "Não autorizado", 
+          code: "UNAUTHORIZED" 
+        })
       }
+    }
+  )
+
+  app.decorate(
+    "authenticateAny",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        await request.jwtVerify();
+        return;
+      } catch (err) {
+        // Silencioso: se falhar JWT, tentamos API Key abaixo
+      }
+
+   
+      const apiKey = request.headers["x-api-key"] as string;
+
+
+      if (apiKey) {
+        const validateApiKey = new ValidateApiKey();
+        const keyRecord = await validateApiKey.execute(apiKey);
+
+        if (keyRecord) {
+          request.apiKeyId = keyRecord.id;
+          return; 
+        }
+      }
+
+      return reply.status(401).send({ 
+        error: "Acesso negado: JWT ou API Key inválida", 
+        code: "UNAUTHORIZED" 
+      });
     }
   )
 
@@ -27,12 +63,16 @@ async function authPluginRaw(app: FastifyInstance) {
       try {
         const payload = request.user as { role: string };
         if (payload.role !== "ADMIN") {
-          return reply.status(403).send({ message: "Acesso restrito a administradores" });
+          return reply.status(403).send({ 
+            error: "Acesso restrito a administradores", 
+            code: "FORBIDDEN" 
+          });
         }
       } catch (err) {
-        console.log(err);
-        
-        reply.status(403).send({ message: "Erro ao verificar permissões" });
+        return reply.status(403).send({ 
+          error: "Erro ao verificar permissões", 
+          code: "FORBIDDEN" 
+        });
       }
     }
   )
@@ -41,12 +81,20 @@ async function authPluginRaw(app: FastifyInstance) {
 export const authPlugin = fp(authPluginRaw)
 
 declare module "fastify" {
+  export interface FastifyRequest {
+    apiKeyId?: string;
+  }
+
   export interface FastifyInstance {
     authenticate: (
       request: FastifyRequest,
       reply: FastifyReply
     ) => Promise<void>;
     isAdmin: (
+      request: FastifyRequest,
+      reply: FastifyReply
+    ) => Promise<void>;
+    authenticateAny: (
       request: FastifyRequest,
       reply: FastifyReply
     ) => Promise<void>;

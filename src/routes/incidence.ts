@@ -15,8 +15,18 @@ import { DeleteIncidence } from "../usecases/incidence/DeleteIncidence.js";
 import { GetIncidence } from "../usecases/incidence/GetIncidence.js";
 
 export const incidenceRoutes = async (app: FastifyInstance) => {
-  // Rotas públicas (Leitura)
+  // Unificar autenticação: GET aceita JWT ou API Key, outros exigem JWT
+  app.addHook("preHandler", async (request, reply) => {
+    if (request.method === "GET") {
+      await app.authenticateAny(request, reply);
+    } else {
+      await app.authenticate(request, reply);
+    }
+  });
+
+  // Rotas de Leitura
   app.withTypeProvider<ZodTypeProvider>().route({
+
     method: "GET",
     url: "/:id",
     schema: getIncidenceSchema,
@@ -64,9 +74,6 @@ export const incidenceRoutes = async (app: FastifyInstance) => {
       }
     },
   });
-
-  // Aplicar autenticação para as rotas de escrita (POST, PATCH, DELETE)
-  app.addHook("preHandler", app.authenticate);
 
   app.withTypeProvider<ZodTypeProvider>().route({
     method: "POST",

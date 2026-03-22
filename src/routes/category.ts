@@ -13,8 +13,14 @@ import { UpdateCategory } from "../usecases/category/UpdateCategory.js";
 import { DeleteCategory } from "../usecases/category/DeleteCategory.js";
 
 export const categoryRoutes = async (app: FastifyInstance) => {
-  // Aplicar autenticação para as rotas de escrita
-  app.addHook("preHandler", app.authenticate);
+  // Unificar autenticação: GET aceita JWT ou API Key, outros exigem JWT
+  app.addHook("preHandler", async (request, reply) => {
+    if (request.method === "GET") {
+      await app.authenticateAny(request, reply);
+    } else {
+      await app.authenticate(request, reply);
+    }
+  });
 
   app.withTypeProvider<ZodTypeProvider>().route({
     method: "POST",

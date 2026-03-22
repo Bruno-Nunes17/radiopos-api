@@ -4,6 +4,8 @@ import { syncSchema } from "../schemas/sync.js";
 import { SyncData } from "../usecases/sync/SyncData.js";
 
 export const syncRoutes = async (app: FastifyInstance) => {
+  app.addHook("preHandler", app.authenticateAny);
+
   app.withTypeProvider<ZodTypeProvider>().route({
     method: "GET",
     url: "/",
