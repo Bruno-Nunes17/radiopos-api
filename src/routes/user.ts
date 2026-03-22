@@ -2,8 +2,8 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import { FastifyInstance } from "fastify";
 import { loginSchema, registerSchema } from "../schemas/user.js";
 import { ConflictError, UnauthorizedError } from "../errors/index.js";
-import { RegisterUser } from "../usecases/RegisterUser.js";
-import { LoginUser } from "../usecases/LoginUser.js";
+import { RegisterUser } from "../usecases/user/RegisterUser.js";
+import { LoginUser } from "../usecases/user/LoginUser.js";
 
 export const userRoutes = async (app: FastifyInstance) => {
   app.withTypeProvider<ZodTypeProvider>().route({
