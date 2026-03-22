@@ -53,7 +53,7 @@ model Subcategory {
   name        String
   createdAt   DateTime    @default(now()) @db.Timestamptz()
   updatedAt   DateTime    @updatedAt @db.Timestamptz()
-  categoria   Category    @relation(fields: [categoriaId], references: [id])
+  categoria   Category    @relation(fields: [categoriaId], references: [id], onDelete: Cascade)
   incidencias Incidence[]
 }
 
@@ -70,7 +70,7 @@ model Incidence {
   youtubeTitle   String?
   createdAt      DateTime             @default(now()) @db.Timestamptz()
   updatedAt      DateTime             @updatedAt @db.Timestamptz()
-  subcategoria   Subcategory          @relation(fields: [subcategoriaId], references: [id])
+  subcategoria   Subcategory          @relation(fields: [subcategoriaId], references: [id], onDelete: Cascade)
   params         TechnicalParams?
   criteria       EvaluationCriteria[]
   medias         Media[]
