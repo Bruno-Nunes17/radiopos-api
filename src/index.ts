@@ -16,6 +16,7 @@ import { categoryRoutes } from "./routes/category.js";
 import { subcategoryRoutes } from "./routes/subcategory.js";
 import { incidenceRoutes } from "./routes/incidence.js";
 import { syncRoutes } from "./routes/sync.js";
+import { apiKeyRoutes } from "./routes/apiKey.js";
 
 const app = Fastify({ logger: true });
 
@@ -59,6 +60,7 @@ await app.register(categoryRoutes, { prefix: "/category" });
 await app.register(subcategoryRoutes, { prefix: "/subcategory" });
 await app.register(incidenceRoutes, { prefix: "/incidence" });
 await app.register(syncRoutes, { prefix: "/sync" });
+await app.register(apiKeyRoutes, { prefix: "/api/v1/api-keys" });
 
 await app.register(fastifyApiReference, {
   routePrefix: "/docs",
@@ -95,6 +97,7 @@ app.withTypeProvider<ZodTypeProvider>().route({
   schema: {
     description: "Hello world",
     tags: ["Hello World"],
+    hide: true,
     response: {
       200: z.object({
         message: z.string(),

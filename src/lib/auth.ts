@@ -20,6 +20,22 @@ async function authPluginRaw(app: FastifyInstance) {
       }
     }
   )
+
+  app.decorate(
+    "isAdmin",
+    async (request: FastifyRequest, reply: FastifyReply) => {
+      try {
+        const payload = request.user as { role: string };
+        if (payload.role !== "ADMIN") {
+          return reply.status(403).send({ message: "Acesso restrito a administradores" });
+        }
+      } catch (err) {
+        console.log(err);
+        
+        reply.status(403).send({ message: "Erro ao verificar permissões" });
+      }
+    }
+  )
 }
 
 export const authPlugin = fp(authPluginRaw)
@@ -29,6 +45,10 @@ declare module "fastify" {
     authenticate: (
       request: FastifyRequest,
       reply: FastifyReply
-    ) => Promise<void>
+    ) => Promise<void>;
+    isAdmin: (
+      request: FastifyRequest,
+      reply: FastifyReply
+    ) => Promise<void>;
   }
 }
