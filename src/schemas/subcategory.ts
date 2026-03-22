@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ErrorSchema } from "./user.js";
+import { ErrorSchema } from "./auth.js";
 import { incidenceSchema } from "./incidence.js";
 
 export const subcategorySchema = z.object({

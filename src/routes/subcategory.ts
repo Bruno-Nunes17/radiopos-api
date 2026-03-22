@@ -9,7 +9,7 @@ import {
   subcategorySchema,
   listSubcategoriesWithIncidencesSchema
 } from "../schemas/subcategory.js";
-import { ErrorSchema } from "../schemas/user.js";
+import { ErrorSchema } from "../schemas/auth.js";
 import { NotFoundError } from "../errors/index.js";
 import { CreateSubcategory } from "../usecases/subcategory/CreateSubcategory.js";
 import { ListSubcategories } from "../usecases/subcategory/ListSubcategories.js";

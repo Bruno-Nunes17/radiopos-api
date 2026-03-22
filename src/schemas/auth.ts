@@ -41,12 +41,29 @@ export const loginSchema = {
   response: {
     200: z.object({
       token: z.string(),
+      refreshToken: z.string(),
       user: z.object({
         id: z.number(),
         name: z.string(),
         email: z.string(),
         role: z.enum(["ADMIN", "EDITOR"]),
       }),
+    }),
+    401: ErrorSchema,
+    500: ErrorSchema,
+  },
+};
+
+export const refreshSchema = {
+  description: "Renovar o access token",
+  summary: "Refresh Token",
+  tags: ["Autenticação"],
+  body: z.object({
+    refreshToken: z.string(),
+  }),
+  response: {
+    200: z.object({
+      token: z.string(),
     }),
     401: ErrorSchema,
     500: ErrorSchema,

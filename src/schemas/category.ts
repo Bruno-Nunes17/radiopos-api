@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ErrorSchema } from "./user.js";
+import { ErrorSchema } from "./auth.js";
 
 export const categorySchema = z.object({
   id: z.string().uuid(),
