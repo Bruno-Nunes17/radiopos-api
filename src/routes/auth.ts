@@ -53,7 +53,7 @@ export const authRoutes = async (app: FastifyInstance) => {
             role: result.user.role,
           },
           {
-            expiresIn: "15m",
+            expiresIn: "1d",
           }
         );
 

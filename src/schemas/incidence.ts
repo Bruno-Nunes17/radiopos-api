@@ -12,7 +12,7 @@ export const incidenceSchema = z.object({
   description: z.string().nullable().optional(),
   structures: z.string().nullable().optional(),
   techTip: z.string().nullable().optional(),
-  youtubeId: z.string().nullable().optional(),
+  youtubeLink: z.string().nullable().optional(),
   youtubeTitle: z.string().nullable().optional(),
   createdAt: z.date(),
   updatedAt: z.date(),
@@ -23,7 +23,6 @@ export const incidenceSchema = z.object({
     kvp: z.number().nullable().optional(),
     mas: z.any().nullable().optional(), // Decimal from Prisma
     cassetteSize: z.string().nullable().optional(),
-    collimation: z.string().nullable().optional(),
   }).nullable().optional(),
   criteria: z.array(z.object({
     id: z.string().uuid(),
@@ -35,6 +34,8 @@ export const incidenceSchema = z.object({
     url: z.string().url(),
     caption: z.string().nullable().optional(),
     order: z.number(),
+    sizeInBytes: z.number().nullable().optional(),
+    format: z.string().nullable().optional(),
   })).optional(),
 });
 
@@ -50,7 +51,7 @@ export const createIncidenceSchema = {
     description: z.string().optional(),
     structures: z.string().optional(),
     techTip: z.string().optional(),
-    youtubeId: z.string().optional(),
+    youtubeLink: z.string().optional(),
     youtubeTitle: z.string().optional(),
     params: z.object({
       centralRay: z.string().optional(),
@@ -58,7 +59,6 @@ export const createIncidenceSchema = {
       kvp: z.number().optional(),
       mas: z.number().optional(), // We accept number and convert to Decimal
       cassetteSize: z.string().optional(),
-      collimation: z.string().optional(),
     }).optional(),
     criteria: z.array(z.object({
       description: z.string(),
@@ -68,6 +68,8 @@ export const createIncidenceSchema = {
       url: z.string().url(),
       caption: z.string().optional(),
       order: z.number(),
+      sizeInBytes: z.number().optional(),
+      format: z.string().optional(),
     })).optional(),
   }),
   response: {
@@ -110,7 +112,7 @@ export const updateIncidenceSchema = {
     description: z.string().optional(),
     structures: z.string().optional(),
     techTip: z.string().optional(),
-    youtubeId: z.string().optional(),
+    youtubeLink: z.string().optional(),
     youtubeTitle: z.string().optional(),
     params: z.object({
       centralRay: z.string().optional(),
@@ -118,7 +120,6 @@ export const updateIncidenceSchema = {
       kvp: z.number().optional(),
       mas: z.number().optional(),
       cassetteSize: z.string().optional(),
-      collimation: z.string().optional(),
     }).optional(),
     criteria: z.array(z.object({
       id: z.string().uuid().optional(), // If provided, updates. If not, can be handled as new or we can simplify.
@@ -130,6 +131,8 @@ export const updateIncidenceSchema = {
       url: z.string().url(),
       caption: z.string().optional(),
       order: z.number(),
+      sizeInBytes: z.number().optional(),
+      format: z.string().optional(),
     })).optional(),
   }),
   response: {

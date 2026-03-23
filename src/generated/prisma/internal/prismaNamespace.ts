@@ -1101,7 +1101,7 @@ export const IncidenceScalarFieldEnum = {
   description: 'description',
   structures: 'structures',
   techTip: 'techTip',
-  youtubeId: 'youtubeId',
+  youtubeLink: 'youtubeLink',
   youtubeTitle: 'youtubeTitle',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1118,7 +1118,6 @@ export const TechnicalParamsScalarFieldEnum = {
   kvp: 'kvp',
   mas: 'mas',
   cassetteSize: 'cassetteSize',
-  collimation: 'collimation',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

@@ -10,7 +10,7 @@ interface UpdateIncidenceInput {
   description?: string;
   structures?: string;
   techTip?: string;
-  youtubeId?: string;
+  youtubeLink?: string;
   youtubeTitle?: string;
   params?: {
     centralRay?: string;
@@ -18,7 +18,6 @@ interface UpdateIncidenceInput {
     kvp?: number;
     mas?: number;
     cassetteSize?: string;
-    collimation?: string;
   };
   criteria?: Array<{
     description: string;
@@ -28,6 +27,8 @@ interface UpdateIncidenceInput {
     url: string;
     caption?: string;
     order: number;
+    sizeInBytes?: number;
+    format?: string;
   }>;
 }
 
@@ -90,7 +91,7 @@ export class UpdateIncidence {
           description: dto.description,
           structures: dto.structures,
           techTip: dto.techTip,
-          youtubeId: dto.youtubeId,
+          youtubeLink: dto.youtubeLink,
           youtubeTitle: dto.youtubeTitle,
         },
         include: {

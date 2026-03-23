@@ -66,7 +66,7 @@ model Incidence {
   description    String?
   structures     String?
   techTip        String?
-  youtubeId      String?
+  youtubeLink      String?
   youtubeTitle   String?
   createdAt      DateTime             @default(now()) @db.Timestamptz()
   updatedAt      DateTime             @updatedAt @db.Timestamptz()
@@ -84,7 +84,6 @@ model TechnicalParams {
   kvp          Int?
   mas          Decimal?
   cassetteSize String?
-  collimation  String?
   incidence    Incidence @relation(fields: [incidenciaId], references: [id], onDelete: Cascade)
   createdAt    DateTime  @default(now()) @db.Timestamptz()
   updatedAt    DateTime  @updatedAt @db.Timestamptz()

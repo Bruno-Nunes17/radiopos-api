@@ -17,11 +17,17 @@ import { subcategoryRoutes } from "./routes/subcategory.js";
 import { incidenceRoutes } from "./routes/incidence.js";
 import { syncRoutes } from "./routes/sync.js";
 import { apiKeyRoutes } from "./routes/apiKey.js";
+import fastifyCors from "@fastify/cors";
 
 const app = Fastify({ logger: true });
 
 app.setValidatorCompiler(validatorCompiler);
 app.setSerializerCompiler(serializerCompiler);
+
+await app.register(fastifyCors, {
+  origin: "*",
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+});
 
 await app.register(fastifySwagger, {
   openapi: {

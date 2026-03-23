@@ -44,7 +44,6 @@ export type TechnicalParamsMinAggregateOutputType = {
   kvp: number | null
   mas: runtime.Decimal | null
   cassetteSize: string | null
-  collimation: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -57,7 +56,6 @@ export type TechnicalParamsMaxAggregateOutputType = {
   kvp: number | null
   mas: runtime.Decimal | null
   cassetteSize: string | null
-  collimation: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -70,7 +68,6 @@ export type TechnicalParamsCountAggregateOutputType = {
   kvp: number
   mas: number
   cassetteSize: number
-  collimation: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -95,7 +92,6 @@ export type TechnicalParamsMinAggregateInputType = {
   kvp?: true
   mas?: true
   cassetteSize?: true
-  collimation?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -108,7 +104,6 @@ export type TechnicalParamsMaxAggregateInputType = {
   kvp?: true
   mas?: true
   cassetteSize?: true
-  collimation?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -121,7 +116,6 @@ export type TechnicalParamsCountAggregateInputType = {
   kvp?: true
   mas?: true
   cassetteSize?: true
-  collimation?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -221,7 +215,6 @@ export type TechnicalParamsGroupByOutputType = {
   kvp: number | null
   mas: runtime.Decimal | null
   cassetteSize: string | null
-  collimation: string | null
   createdAt: Date
   updatedAt: Date
   _count: TechnicalParamsCountAggregateOutputType | null
@@ -257,7 +250,6 @@ export type TechnicalParamsWhereInput = {
   kvp?: Prisma.IntNullableFilter<"TechnicalParams"> | number | null
   mas?: Prisma.DecimalNullableFilter<"TechnicalParams"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.StringNullableFilter<"TechnicalParams"> | string | null
-  collimation?: Prisma.StringNullableFilter<"TechnicalParams"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TechnicalParams"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TechnicalParams"> | Date | string
   incidence?: Prisma.XOR<Prisma.IncidenceScalarRelationFilter, Prisma.IncidenceWhereInput>
@@ -271,7 +263,6 @@ export type TechnicalParamsOrderByWithRelationInput = {
   kvp?: Prisma.SortOrderInput | Prisma.SortOrder
   mas?: Prisma.SortOrderInput | Prisma.SortOrder
   cassetteSize?: Prisma.SortOrderInput | Prisma.SortOrder
-  collimation?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   incidence?: Prisma.IncidenceOrderByWithRelationInput
@@ -288,7 +279,6 @@ export type TechnicalParamsWhereUniqueInput = Prisma.AtLeast<{
   kvp?: Prisma.IntNullableFilter<"TechnicalParams"> | number | null
   mas?: Prisma.DecimalNullableFilter<"TechnicalParams"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.StringNullableFilter<"TechnicalParams"> | string | null
-  collimation?: Prisma.StringNullableFilter<"TechnicalParams"> | string | null
   createdAt?: Prisma.DateTimeFilter<"TechnicalParams"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"TechnicalParams"> | Date | string
   incidence?: Prisma.XOR<Prisma.IncidenceScalarRelationFilter, Prisma.IncidenceWhereInput>
@@ -302,7 +292,6 @@ export type TechnicalParamsOrderByWithAggregationInput = {
   kvp?: Prisma.SortOrderInput | Prisma.SortOrder
   mas?: Prisma.SortOrderInput | Prisma.SortOrder
   cassetteSize?: Prisma.SortOrderInput | Prisma.SortOrder
-  collimation?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.TechnicalParamsCountOrderByAggregateInput
@@ -323,7 +312,6 @@ export type TechnicalParamsScalarWhereWithAggregatesInput = {
   kvp?: Prisma.IntNullableWithAggregatesFilter<"TechnicalParams"> | number | null
   mas?: Prisma.DecimalNullableWithAggregatesFilter<"TechnicalParams"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.StringNullableWithAggregatesFilter<"TechnicalParams"> | string | null
-  collimation?: Prisma.StringNullableWithAggregatesFilter<"TechnicalParams"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"TechnicalParams"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"TechnicalParams"> | Date | string
 }
@@ -335,7 +323,6 @@ export type TechnicalParamsCreateInput = {
   kvp?: number | null
   mas?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: string | null
-  collimation?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   incidence: Prisma.IncidenceCreateNestedOneWithoutParamsInput
@@ -349,7 +336,6 @@ export type TechnicalParamsUncheckedCreateInput = {
   kvp?: number | null
   mas?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: string | null
-  collimation?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -361,7 +347,6 @@ export type TechnicalParamsUpdateInput = {
   kvp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   mas?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  collimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   incidence?: Prisma.IncidenceUpdateOneRequiredWithoutParamsNestedInput
@@ -375,7 +360,6 @@ export type TechnicalParamsUncheckedUpdateInput = {
   kvp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   mas?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  collimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -388,7 +372,6 @@ export type TechnicalParamsCreateManyInput = {
   kvp?: number | null
   mas?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: string | null
-  collimation?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -400,7 +383,6 @@ export type TechnicalParamsUpdateManyMutationInput = {
   kvp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   mas?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  collimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -413,7 +395,6 @@ export type TechnicalParamsUncheckedUpdateManyInput = {
   kvp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   mas?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  collimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -431,7 +412,6 @@ export type TechnicalParamsCountOrderByAggregateInput = {
   kvp?: Prisma.SortOrder
   mas?: Prisma.SortOrder
   cassetteSize?: Prisma.SortOrder
-  collimation?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -449,7 +429,6 @@ export type TechnicalParamsMaxOrderByAggregateInput = {
   kvp?: Prisma.SortOrder
   mas?: Prisma.SortOrder
   cassetteSize?: Prisma.SortOrder
-  collimation?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -462,7 +441,6 @@ export type TechnicalParamsMinOrderByAggregateInput = {
   kvp?: Prisma.SortOrder
   mas?: Prisma.SortOrder
   cassetteSize?: Prisma.SortOrder
-  collimation?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -527,7 +505,6 @@ export type TechnicalParamsCreateWithoutIncidenceInput = {
   kvp?: number | null
   mas?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: string | null
-  collimation?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -539,7 +516,6 @@ export type TechnicalParamsUncheckedCreateWithoutIncidenceInput = {
   kvp?: number | null
   mas?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: string | null
-  collimation?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -567,7 +543,6 @@ export type TechnicalParamsUpdateWithoutIncidenceInput = {
   kvp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   mas?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  collimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -579,7 +554,6 @@ export type TechnicalParamsUncheckedUpdateWithoutIncidenceInput = {
   kvp?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   mas?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   cassetteSize?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  collimation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -594,7 +568,6 @@ export type TechnicalParamsSelect<ExtArgs extends runtime.Types.Extensions.Inter
   kvp?: boolean
   mas?: boolean
   cassetteSize?: boolean
-  collimation?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   incidence?: boolean | Prisma.IncidenceDefaultArgs<ExtArgs>
@@ -608,7 +581,6 @@ export type TechnicalParamsSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   kvp?: boolean
   mas?: boolean
   cassetteSize?: boolean
-  collimation?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   incidence?: boolean | Prisma.IncidenceDefaultArgs<ExtArgs>
@@ -622,7 +594,6 @@ export type TechnicalParamsSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   kvp?: boolean
   mas?: boolean
   cassetteSize?: boolean
-  collimation?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   incidence?: boolean | Prisma.IncidenceDefaultArgs<ExtArgs>
@@ -636,12 +607,11 @@ export type TechnicalParamsSelectScalar = {
   kvp?: boolean
   mas?: boolean
   cassetteSize?: boolean
-  collimation?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type TechnicalParamsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "incidenciaId" | "centralRay" | "ffd" | "kvp" | "mas" | "cassetteSize" | "collimation" | "createdAt" | "updatedAt", ExtArgs["result"]["technicalParams"]>
+export type TechnicalParamsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "incidenciaId" | "centralRay" | "ffd" | "kvp" | "mas" | "cassetteSize" | "createdAt" | "updatedAt", ExtArgs["result"]["technicalParams"]>
 export type TechnicalParamsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   incidence?: boolean | Prisma.IncidenceDefaultArgs<ExtArgs>
 }
@@ -665,7 +635,6 @@ export type $TechnicalParamsPayload<ExtArgs extends runtime.Types.Extensions.Int
     kvp: number | null
     mas: runtime.Decimal | null
     cassetteSize: string | null
-    collimation: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["technicalParams"]>
@@ -1099,7 +1068,6 @@ export interface TechnicalParamsFieldRefs {
   readonly kvp: Prisma.FieldRef<"TechnicalParams", 'Int'>
   readonly mas: Prisma.FieldRef<"TechnicalParams", 'Decimal'>
   readonly cassetteSize: Prisma.FieldRef<"TechnicalParams", 'String'>
-  readonly collimation: Prisma.FieldRef<"TechnicalParams", 'String'>
   readonly createdAt: Prisma.FieldRef<"TechnicalParams", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"TechnicalParams", 'DateTime'>
 }

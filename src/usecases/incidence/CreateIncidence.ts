@@ -9,7 +9,7 @@ interface CreateIncidenceInput {
   description?: string;
   structures?: string;
   techTip?: string;
-  youtubeId?: string;
+  youtubeLink?: string;
   youtubeTitle?: string;
   params?: {
     centralRay?: string;
@@ -17,7 +17,6 @@ interface CreateIncidenceInput {
     kvp?: number;
     mas?: number;
     cassetteSize?: string;
-    collimation?: string;
   };
   criteria?: Array<{
     description: string;
@@ -27,6 +26,8 @@ interface CreateIncidenceInput {
     url: string;
     caption?: string;
     order: number;
+    sizeInBytes?: number;
+    format?: string;
   }>;
 }
 
@@ -49,7 +50,7 @@ export class CreateIncidence {
         description: dto.description,
         structures: dto.structures,
         techTip: dto.techTip,
-        youtubeId: dto.youtubeId,
+        youtubeLink: dto.youtubeLink,
         youtubeTitle: dto.youtubeTitle,
         params: dto.params ? {
           create: dto.params

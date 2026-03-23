@@ -33,7 +33,7 @@ export type IncidenceMinAggregateOutputType = {
   description: string | null
   structures: string | null
   techTip: string | null
-  youtubeId: string | null
+  youtubeLink: string | null
   youtubeTitle: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -48,7 +48,7 @@ export type IncidenceMaxAggregateOutputType = {
   description: string | null
   structures: string | null
   techTip: string | null
-  youtubeId: string | null
+  youtubeLink: string | null
   youtubeTitle: string | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -63,7 +63,7 @@ export type IncidenceCountAggregateOutputType = {
   description: number
   structures: number
   techTip: number
-  youtubeId: number
+  youtubeLink: number
   youtubeTitle: number
   createdAt: number
   updatedAt: number
@@ -80,7 +80,7 @@ export type IncidenceMinAggregateInputType = {
   description?: true
   structures?: true
   techTip?: true
-  youtubeId?: true
+  youtubeLink?: true
   youtubeTitle?: true
   createdAt?: true
   updatedAt?: true
@@ -95,7 +95,7 @@ export type IncidenceMaxAggregateInputType = {
   description?: true
   structures?: true
   techTip?: true
-  youtubeId?: true
+  youtubeLink?: true
   youtubeTitle?: true
   createdAt?: true
   updatedAt?: true
@@ -110,7 +110,7 @@ export type IncidenceCountAggregateInputType = {
   description?: true
   structures?: true
   techTip?: true
-  youtubeId?: true
+  youtubeLink?: true
   youtubeTitle?: true
   createdAt?: true
   updatedAt?: true
@@ -198,7 +198,7 @@ export type IncidenceGroupByOutputType = {
   description: string | null
   structures: string | null
   techTip: string | null
-  youtubeId: string | null
+  youtubeLink: string | null
   youtubeTitle: string | null
   createdAt: Date
   updatedAt: Date
@@ -234,7 +234,7 @@ export type IncidenceWhereInput = {
   description?: Prisma.StringNullableFilter<"Incidence"> | string | null
   structures?: Prisma.StringNullableFilter<"Incidence"> | string | null
   techTip?: Prisma.StringNullableFilter<"Incidence"> | string | null
-  youtubeId?: Prisma.StringNullableFilter<"Incidence"> | string | null
+  youtubeLink?: Prisma.StringNullableFilter<"Incidence"> | string | null
   youtubeTitle?: Prisma.StringNullableFilter<"Incidence"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Incidence"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Incidence"> | Date | string
@@ -253,7 +253,7 @@ export type IncidenceOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   structures?: Prisma.SortOrderInput | Prisma.SortOrder
   techTip?: Prisma.SortOrderInput | Prisma.SortOrder
-  youtubeId?: Prisma.SortOrderInput | Prisma.SortOrder
+  youtubeLink?: Prisma.SortOrderInput | Prisma.SortOrder
   youtubeTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -275,7 +275,7 @@ export type IncidenceWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Incidence"> | string | null
   structures?: Prisma.StringNullableFilter<"Incidence"> | string | null
   techTip?: Prisma.StringNullableFilter<"Incidence"> | string | null
-  youtubeId?: Prisma.StringNullableFilter<"Incidence"> | string | null
+  youtubeLink?: Prisma.StringNullableFilter<"Incidence"> | string | null
   youtubeTitle?: Prisma.StringNullableFilter<"Incidence"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Incidence"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Incidence"> | Date | string
@@ -294,7 +294,7 @@ export type IncidenceOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   structures?: Prisma.SortOrderInput | Prisma.SortOrder
   techTip?: Prisma.SortOrderInput | Prisma.SortOrder
-  youtubeId?: Prisma.SortOrderInput | Prisma.SortOrder
+  youtubeLink?: Prisma.SortOrderInput | Prisma.SortOrder
   youtubeTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -315,7 +315,7 @@ export type IncidenceScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"Incidence"> | string | null
   structures?: Prisma.StringNullableWithAggregatesFilter<"Incidence"> | string | null
   techTip?: Prisma.StringNullableWithAggregatesFilter<"Incidence"> | string | null
-  youtubeId?: Prisma.StringNullableWithAggregatesFilter<"Incidence"> | string | null
+  youtubeLink?: Prisma.StringNullableWithAggregatesFilter<"Incidence"> | string | null
   youtubeTitle?: Prisma.StringNullableWithAggregatesFilter<"Incidence"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Incidence"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Incidence"> | Date | string
@@ -329,7 +329,7 @@ export type IncidenceCreateInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -348,7 +348,7 @@ export type IncidenceUncheckedCreateInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -365,7 +365,7 @@ export type IncidenceUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -384,7 +384,7 @@ export type IncidenceUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -402,7 +402,7 @@ export type IncidenceCreateManyInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -416,7 +416,7 @@ export type IncidenceUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -431,7 +431,7 @@ export type IncidenceUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -456,7 +456,7 @@ export type IncidenceCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   structures?: Prisma.SortOrder
   techTip?: Prisma.SortOrder
-  youtubeId?: Prisma.SortOrder
+  youtubeLink?: Prisma.SortOrder
   youtubeTitle?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -471,7 +471,7 @@ export type IncidenceMaxOrderByAggregateInput = {
   description?: Prisma.SortOrder
   structures?: Prisma.SortOrder
   techTip?: Prisma.SortOrder
-  youtubeId?: Prisma.SortOrder
+  youtubeLink?: Prisma.SortOrder
   youtubeTitle?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -486,7 +486,7 @@ export type IncidenceMinOrderByAggregateInput = {
   description?: Prisma.SortOrder
   structures?: Prisma.SortOrder
   techTip?: Prisma.SortOrder
-  youtubeId?: Prisma.SortOrder
+  youtubeLink?: Prisma.SortOrder
   youtubeTitle?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -593,7 +593,7 @@ export type IncidenceCreateWithoutSubcategoriaInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -610,7 +610,7 @@ export type IncidenceUncheckedCreateWithoutSubcategoriaInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -657,7 +657,7 @@ export type IncidenceScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"Incidence"> | string | null
   structures?: Prisma.StringNullableFilter<"Incidence"> | string | null
   techTip?: Prisma.StringNullableFilter<"Incidence"> | string | null
-  youtubeId?: Prisma.StringNullableFilter<"Incidence"> | string | null
+  youtubeLink?: Prisma.StringNullableFilter<"Incidence"> | string | null
   youtubeTitle?: Prisma.StringNullableFilter<"Incidence"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Incidence"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Incidence"> | Date | string
@@ -671,7 +671,7 @@ export type IncidenceCreateWithoutParamsInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -689,7 +689,7 @@ export type IncidenceUncheckedCreateWithoutParamsInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -721,7 +721,7 @@ export type IncidenceUpdateWithoutParamsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -739,7 +739,7 @@ export type IncidenceUncheckedUpdateWithoutParamsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -755,7 +755,7 @@ export type IncidenceCreateWithoutCriteriaInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -773,7 +773,7 @@ export type IncidenceUncheckedCreateWithoutCriteriaInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -805,7 +805,7 @@ export type IncidenceUpdateWithoutCriteriaInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -823,7 +823,7 @@ export type IncidenceUncheckedUpdateWithoutCriteriaInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -839,7 +839,7 @@ export type IncidenceCreateWithoutMediasInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -857,7 +857,7 @@ export type IncidenceUncheckedCreateWithoutMediasInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -889,7 +889,7 @@ export type IncidenceUpdateWithoutMediasInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -907,7 +907,7 @@ export type IncidenceUncheckedUpdateWithoutMediasInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -923,7 +923,7 @@ export type IncidenceCreateManySubcategoriaInput = {
   description?: string | null
   structures?: string | null
   techTip?: string | null
-  youtubeId?: string | null
+  youtubeLink?: string | null
   youtubeTitle?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -937,7 +937,7 @@ export type IncidenceUpdateWithoutSubcategoriaInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -954,7 +954,7 @@ export type IncidenceUncheckedUpdateWithoutSubcategoriaInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -971,7 +971,7 @@ export type IncidenceUncheckedUpdateManyWithoutSubcategoriaInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   structures?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   techTip?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  youtubeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  youtubeLink?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   youtubeTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1026,7 +1026,7 @@ export type IncidenceSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   description?: boolean
   structures?: boolean
   techTip?: boolean
-  youtubeId?: boolean
+  youtubeLink?: boolean
   youtubeTitle?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1046,7 +1046,7 @@ export type IncidenceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   description?: boolean
   structures?: boolean
   techTip?: boolean
-  youtubeId?: boolean
+  youtubeLink?: boolean
   youtubeTitle?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1062,7 +1062,7 @@ export type IncidenceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   description?: boolean
   structures?: boolean
   techTip?: boolean
-  youtubeId?: boolean
+  youtubeLink?: boolean
   youtubeTitle?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1078,13 +1078,13 @@ export type IncidenceSelectScalar = {
   description?: boolean
   structures?: boolean
   techTip?: boolean
-  youtubeId?: boolean
+  youtubeLink?: boolean
   youtubeTitle?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type IncidenceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "subcategoriaId" | "name" | "routine" | "position" | "description" | "structures" | "techTip" | "youtubeId" | "youtubeTitle" | "createdAt" | "updatedAt", ExtArgs["result"]["incidence"]>
+export type IncidenceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "subcategoriaId" | "name" | "routine" | "position" | "description" | "structures" | "techTip" | "youtubeLink" | "youtubeTitle" | "createdAt" | "updatedAt", ExtArgs["result"]["incidence"]>
 export type IncidenceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   subcategoria?: boolean | Prisma.SubcategoryDefaultArgs<ExtArgs>
   params?: boolean | Prisma.Incidence$paramsArgs<ExtArgs>
@@ -1116,7 +1116,7 @@ export type $IncidencePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     description: string | null
     structures: string | null
     techTip: string | null
-    youtubeId: string | null
+    youtubeLink: string | null
     youtubeTitle: string | null
     createdAt: Date
     updatedAt: Date
@@ -1555,7 +1555,7 @@ export interface IncidenceFieldRefs {
   readonly description: Prisma.FieldRef<"Incidence", 'String'>
   readonly structures: Prisma.FieldRef<"Incidence", 'String'>
   readonly techTip: Prisma.FieldRef<"Incidence", 'String'>
-  readonly youtubeId: Prisma.FieldRef<"Incidence", 'String'>
+  readonly youtubeLink: Prisma.FieldRef<"Incidence", 'String'>
   readonly youtubeTitle: Prisma.FieldRef<"Incidence", 'String'>
   readonly createdAt: Prisma.FieldRef<"Incidence", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Incidence", 'DateTime'>
