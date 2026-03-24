@@ -49,7 +49,7 @@ export const revokeApiKeySchema = {
     id: z.string().uuid(),
   }),
   response: {
-    204: z.null(),
+    204: z.undefined(),
     401: ErrorSchema,
     403: ErrorSchema,
     404: ErrorSchema,

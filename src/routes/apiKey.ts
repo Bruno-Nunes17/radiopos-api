@@ -66,7 +66,7 @@ export const apiKeyRoutes = async (app: FastifyInstance) => {
         const revokeApiKey = new RevokeApiKey();
         await revokeApiKey.execute(id);
 
-        return reply.status(204).send(null);
+        return reply.status(204).send(undefined);
       } catch (error) {
         app.log.error(error);
         if (error instanceof NotFoundError) {
