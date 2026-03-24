@@ -72,6 +72,7 @@ await app.register(apiKeyRoutes, { prefix: "/api/v1/api-keys" });
 await app.register(fastifyApiReference, {
   routePrefix: "/docs",
   configuration: {
+    cdn: 'https://cdn.jsdelivr.net/npm/@scalar/api-reference',
     sources: [
       {
         title: "RadioPos API",

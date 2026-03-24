@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "src/index.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["src/generated/prisma/**"]
-      }
+  "functions": {
+    "src/index.ts": {
+      "runtime": "@vercel/node",
+      "includeFiles": [
+        "src/generated/prisma/**",
+        "node_modules/@scalar/fastify-api-reference/dist/utils/js/standalone.js"
+      ]
     }
-  ],
+  },
   "rewrites": [
     {
       "source": "/(.*)",
