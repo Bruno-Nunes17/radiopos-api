@@ -69,24 +69,26 @@ await app.register(incidenceRoutes, { prefix: "/incidence" });
 await app.register(syncRoutes, { prefix: "/sync" });
 await app.register(apiKeyRoutes, { prefix: "/api/v1/api-keys" });
 
-await app.register(fastifyApiReference, {
-  routePrefix: "/docs",
-  configuration: {
-    cdn: 'https://cdn.jsdelivr.net/npm/@scalar/api-reference',
-    sources: [
-      {
-        title: "RadioPos API",
-        slug: "radiopos-api",
-        url: "/swagger.json",
-      },
-      {
-        title: "Auth API",
-        slug: "auth-api",
-        url: "/api/auth/open-api/generate-schema",
-      },
-    ],
-  },
-});
+if (process.env.NODE_ENV !== 'production') {
+  await app.register(fastifyApiReference, {
+    routePrefix: "/docs",
+    configuration: {
+      cdn: "https://cdn.jsdelivr.net/npm/@scalar/api-reference",
+      sources: [
+        {
+          title: "RadioPos API",
+          slug: "radiopos-api",
+          url: "/swagger.json",
+        },
+        {
+          title: "Auth API",
+          slug: "auth-api",
+          url: "/api/auth/open-api/generate-schema",
+        },
+      ],
+    },
+  });
+}
 
 app.withTypeProvider<ZodTypeProvider>().route({
   method: "GET",
