@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { IncomingMessage, ServerResponse } from "node:http";
 import fastifySwagger from "@fastify/swagger";
 import fastifyApiReference from "@scalar/fastify-api-reference";
 import Fastify from "fastify";
@@ -117,9 +118,16 @@ app.withTypeProvider<ZodTypeProvider>().route({
   },
 });
 
-try {
-  await app.listen({ host: "0.0.0.0", port: env.PORT });
-} catch (err) {
-  app.log.error(err);
-  process.exit(1);
+export default async (req: IncomingMessage, res: ServerResponse) => {
+  await app.ready();
+  app.server.emit("request", req, res);
+};
+
+if (!process.env.VERCEL) {
+  try {
+    await app.listen({ host: "0.0.0.0", port: env.PORT });
+  } catch (err) {
+    app.log.error(err);
+    process.exit(1);
+  }
 }

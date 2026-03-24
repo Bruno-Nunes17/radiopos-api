@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx --watch src/index.ts",
-    "build": "pnpm exec prisma generate && tsc"
+    "build": "pnpm exec prisma generate && tsc",
+    "vercel-build": "pnpm exec prisma generate && tsc"
   },
   "engines": {
     "node": "24.x"
