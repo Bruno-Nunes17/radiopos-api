@@ -3,10 +3,7 @@
   "functions": {
     "src/index.ts": {
       "runtime": "@vercel/node",
-      "includeFiles": [
-        "src/generated/prisma/**",
-        "node_modules/@scalar/fastify-api-reference/dist/utils/js/standalone.js"
-      ]
+      "includeFiles": "src/generated/prisma/**"
     }
   },
   "rewrites": [
