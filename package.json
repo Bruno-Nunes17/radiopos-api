@@ -10,7 +10,7 @@
     "vercel-build": "pnpm exec prisma generate && tsc"
   },
   "engines": {
-    "node": "24.x"
+    "node": "22.x"
   },
   "keywords": [],
   "author": "",
