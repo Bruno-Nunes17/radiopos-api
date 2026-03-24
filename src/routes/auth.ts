@@ -53,7 +53,7 @@ export const authRoutes = async (app: FastifyInstance) => {
             role: result.user.role,
           },
           {
-            expiresIn: "1d",
+            expiresIn: env.JWT_EXPIRY,
           }
         );
 
@@ -98,7 +98,7 @@ export const authRoutes = async (app: FastifyInstance) => {
             role: payload.role,
           },
           {
-            expiresIn: env.JWT_EXPIRY,
+            expiresIn: env.JWT_REFRESH_EXPIRY,
           }
         );
 
