@@ -23,6 +23,11 @@ export const syncSchema = {
           categoria: categorySchema
         })
       })),
+      allIds: z.object({
+        categories: z.array(z.string()),
+        subcategories: z.array(z.string()),
+        incidences: z.array(z.string()),
+      }),
     }),
     400: ErrorSchema,
     401: ErrorSchema,

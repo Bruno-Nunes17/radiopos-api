@@ -8,7 +8,7 @@ export class SyncData {
   async execute(dto: SyncDataInput) {
     const sinceDate = new Date(dto.since);
 
-    const [categories, subcategories, incidences] = await Promise.all([
+    const [categories, subcategories, incidences, allCategoryIds, allSubcategoryIds, allIncidenceIds] = await Promise.all([
       // Query 1 — categories
       prisma.category.findMany({
         where: {
@@ -42,6 +42,11 @@ export class SyncData {
           medias: true,
         },
       }),
+
+      // IDs para verificação de cache
+      prisma.category.findMany({ select: { id: true } }),
+      prisma.subcategory.findMany({ select: { id: true } }),
+      prisma.incidence.findMany({ select: { id: true } }),
     ]);
 
     return {
@@ -49,6 +54,11 @@ export class SyncData {
       categories,
       subcategories,
       incidences,
+      allIds: {
+        categories: allCategoryIds.map((c) => c.id),
+        subcategories: allSubcategoryIds.map((s) => s.id),
+        incidences: allIncidenceIds.map((i) => i.id),
+      },
     };
   }
 }
